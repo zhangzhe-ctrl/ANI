@@ -3,7 +3,7 @@ schema_version: 1
 locale: zh-CN
 branch: main
 nodes_managed: true
-exported_at: "2026-08-18T17:06:41Z"
+exported_at: "2026-08-19T06:19:36Z"
 modules:
     "":
         dir_name: KuberCloud ANI 平台根工程

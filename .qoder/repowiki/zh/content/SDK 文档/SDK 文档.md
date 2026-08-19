@@ -14,6 +14,13 @@
 - [repo/sdks/services/typescript/src/index.ts](file://repo/sdks/services/typescript/src/index.ts)
 </cite>
 
+## 更新摘要
+**变更内容**
+- 新增 upsertTenantQuota 操作支持，用于租户配额的原子性创建或更新
+- 更新了所有四种语言 SDK（Go、Java、Python、TypeScript）以包含新的 upsert 操作
+- 在 Core SDK 中添加了 upsertTenantQuota 到 operations 列表和 idempotencyOperations 列表
+- 新增了相关的 API 端点 /admin/tenants/{tenant_id}/quota/upsert
+
 ## 目录
 1. [简介](#简介)
 2. [项目结构](#项目结构)
@@ -34,8 +41,10 @@
 - 游标分页：对列表接口提供 limit/cursor 参数构造工具
 - 基础 HTTP 客户端封装：请求构建、响应解码、异常转换
 
+**最新更新**：新增 upsertTenantQuota 操作，支持租户配额的原子性创建或更新，避免并发冲突问题。
+
 ## 项目结构
-SDK 按“层（core/services）× 语言”组织，每个语言包包含：
+SDK 按"层（core/services）× 语言"组织，每个语言包包含：
 - 常量与清单：层名、标题、版本、服务器地址、操作集合、路径集合、Schema 名称集合、幂等操作集合、游标分页操作集合、错误码集合
 - 客户端类：统一发起 HTTP 请求、组装 URL/Headers、编码/解码 JSON、抛出结构化错误
 - 辅助函数：生成幂等键、合并幂等键到请求体、构造分页参数、判断错误码是否受管
@@ -54,11 +63,11 @@ B -.-> M1
 C -.-> M2
 ```
 
-图表来源
+**图表来源**
 - [repo/sdks/core/sdk-metadata.json:1-20](file://repo/sdks/core/sdk-metadata.json#L1-L20)
 - [repo/sdks/services/sdk-metadata.json:1-20](file://repo/sdks/services/sdk-metadata.json#L1-L20)
 
-章节来源
+**章节来源**
 - [repo/sdks/core/sdk-metadata.json:1-20](file://repo/sdks/core/sdk-metadata.json#L1-L20)
 - [repo/sdks/services/sdk-metadata.json:1-20](file://repo/sdks/services/sdk-metadata.json#L1-L20)
 
@@ -77,7 +86,7 @@ C -.-> M2
   - cursorParams：构造 limit/cursor 分页参数
   - isAPIErrorCode：判断错误码是否在受管集合中
 
-章节来源
+**章节来源**
 - [repo/sdks/core/go/anisdk/client.go:391-556](file://repo/sdks/core/go/anisdk/client.go#L391-L556)
 - [repo/sdks/services/go/anisdk/client.go:391-556](file://repo/sdks/services/go/anisdk/client.go#L391-L556)
 - [repo/sdks/core/java/src/main/java/com/kubercloud/ani/core/ApiClient.java:381-569](file://repo/sdks/core/java/src/main/java/com/kubercloud/ani/core/ApiClient.java#L381-L569)
@@ -107,7 +116,7 @@ SDK->>SDK : 解码JSON/构造错误对象
 SDK-->>App : 返回结果或抛出异常
 ```
 
-图表来源
+**图表来源**
 - [repo/sdks/core/go/anisdk/client.go:409-496](file://repo/sdks/core/go/anisdk/client.go#L409-L496)
 - [repo/sdks/services/go/anisdk/client.go:409-496](file://repo/sdks/services/go/anisdk/client.go#L409-L496)
 - [repo/sdks/core/java/src/main/java/com/kubercloud/ani/core/ApiClient.java:468-528](file://repo/sdks/core/java/src/main/java/com/kubercloud/ani/core/ApiClient.java#L468-L528)
@@ -126,7 +135,7 @@ SDK-->>App : 返回结果或抛出异常
 - 幂等性：为标记为幂等的操作，可通过 withIdempotencyKey 注入 idempotency_key
 - 分页：对游标分页操作，使用 cursorParams(limit, cursor) 构造查询参数
 
-章节来源
+**章节来源**
 - [repo/sdks/core/go/anisdk/client.go:409-556](file://repo/sdks/core/go/anisdk/client.go#L409-L556)
 - [repo/sdks/services/go/anisdk/client.go:409-556](file://repo/sdks/services/go/anisdk/client.go#L409-L556)
 - [repo/sdks/core/java/src/main/java/com/kubercloud/ani/core/ApiClient.java:468-569](file://repo/sdks/core/java/src/main/java/com/kubercloud/ani/core/ApiClient.java#L468-L569)
@@ -164,11 +173,11 @@ Client --> RequestOptions : "使用"
 Client --> APIError : "返回错误"
 ```
 
-图表来源
+**图表来源**
 - [repo/sdks/core/go/anisdk/client.go:391-556](file://repo/sdks/core/go/anisdk/client.go#L391-L556)
 - [repo/sdks/services/go/anisdk/client.go:391-556](file://repo/sdks/services/go/anisdk/client.go#L391-L556)
 
-章节来源
+**章节来源**
 - [repo/sdks/core/go/anisdk/client.go:391-556](file://repo/sdks/core/go/anisdk/client.go#L391-L556)
 - [repo/sdks/services/go/anisdk/client.go:391-556](file://repo/sdks/services/go/anisdk/client.go#L391-L556)
 
@@ -204,11 +213,11 @@ ApiClient --> APIException : "抛出"
 APIException --> APIError : "包含"
 ```
 
-图表来源
+**图表来源**
 - [repo/sdks/core/java/src/main/java/com/kubercloud/ani/core/ApiClient.java:381-569](file://repo/sdks/core/java/src/main/java/com/kubercloud/ani/core/ApiClient.java#L381-L569)
 - [repo/sdks/services/java/src/main/java/com/kubercloud/ani/services/ApiClient.java:381-569](file://repo/sdks/services/java/src/main/java/com/kubercloud/ani/services/ApiClient.java#L381-L569)
 
-章节来源
+**章节来源**
 - [repo/sdks/core/java/src/main/java/com/kubercloud/ani/core/ApiClient.java:381-569](file://repo/sdks/core/java/src/main/java/com/kubercloud/ani/core/ApiClient.java#L381-L569)
 - [repo/sdks/services/java/src/main/java/com/kubercloud/ani/services/ApiClient.java:381-569](file://repo/sdks/services/java/src/main/java/com/kubercloud/ani/services/ApiClient.java#L381-L569)
 
@@ -231,11 +240,11 @@ Check -- 是 --> Err["解析错误体并抛出APIError"]
 Check -- 否 --> Return["返回解析结果"]
 ```
 
-图表来源
+**图表来源**
 - [repo/sdks/core/python/kubercloud_ani_core/client.py:388-443](file://repo/sdks/core/python/kubercloud_ani_core/client.py#L388-L443)
 - [repo/sdks/services/python/kubercloud_ani_services/client.py:388-443](file://repo/sdks/services/python/kubercloud_ani_services/client.py#L388-L443)
 
-章节来源
+**章节来源**
 - [repo/sdks/core/python/kubercloud_ani_core/client.py:379-467](file://repo/sdks/core/python/kubercloud_ani_core/client.py#L379-L467)
 - [repo/sdks/services/python/kubercloud_ani_services/client.py:364-467](file://repo/sdks/services/python/kubercloud_ani_services/client.py#L364-L467)
 
@@ -258,13 +267,42 @@ TS->>TS : decodeResponse()
 TS-->>App : 返回数据或抛出APIError
 ```
 
-图表来源
+**图表来源**
 - [repo/sdks/core/typescript/src/index.ts:390-439](file://repo/sdks/core/typescript/src/index.ts#L390-L439)
 - [repo/sdks/services/typescript/src/index.ts:390-439](file://repo/sdks/services/typescript/src/index.ts#L390-L439)
 
-章节来源
+**章节来源**
 - [repo/sdks/core/typescript/src/index.ts:359-481](file://repo/sdks/core/typescript/src/index.ts#L359-L481)
 - [repo/sdks/services/typescript/src/index.ts:359-481](file://repo/sdks/services/typescript/src/index.ts#L359-L481)
+
+### 新增 upsertTenantQuota 操作
+
+**最新更新**：所有 SDK 现已支持 upsertTenantQuota 操作，用于租户配额的原子性创建或更新。
+
+#### 操作详情
+- **操作 ID**: `upsertTenantQuota`
+- **HTTP 方法**: PUT
+- **路径**: `/admin/tenants/{tenant_id}/quota/upsert`
+- **权限范围**: `scope:quota:write`
+- **幂等性**: 支持幂等键注入
+
+#### 功能特性
+- 原子性操作：如果租户配额不存在则创建，如果已存在则更新
+- 避免并发冲突：通过幂等键确保操作的原子性
+- 统一的错误处理：与其他配额操作保持一致的错误处理机制
+
+#### 在各语言 SDK 中的支持
+- **Go SDK**: 已在 operations 列表中添加 `upsertTenantQuota`
+- **Java SDK**: 已在 operations 列表中添加 `upsertTenantQuota`
+- **Python SDK**: 已在 operations 列表中添加 `upsertTenantQuota`
+- **TypeScript SDK**: 已在 operations 列表中添加 `upsertTenantQuota`
+
+**章节来源**
+- [repo/sdks/core/sdk-metadata.json:37-42](file://repo/sdks/core/sdk-metadata.json#L37-L42)
+- [repo/sdks/core/go/anisdk/client.go:27](file://repo/sdks/core/go/anisdk/client.go#L27)
+- [repo/sdks/core/java/src/main/java/com/kubercloud/ani/core/ApiClient.java:34](file://repo/sdks/core/java/src/main/java/com/kubercloud/ani/core/ApiClient.java#L34)
+- [repo/sdks/core/python/kubercloud_ani_core/client.py:16](file://repo/sdks/core/python/kubercloud_ani_core/client.py#L16)
+- [repo/sdks/core/typescript/src/index.ts:12](file://repo/sdks/core/typescript/src/index.ts#L12)
 
 ## 依赖关系分析
 - 元数据驱动：各语言 SDK 的 operations、paths、schemas、idempotencyOperations、cursorPaginationOperations、errorCodes 均由 sdk-metadata.json 生成，确保一致性
@@ -288,11 +326,11 @@ Py --> ULib["urllib.request"]
 TS --> Fetch["fetch"]
 ```
 
-图表来源
+**图表来源**
 - [repo/sdks/core/sdk-metadata.json:1-20](file://repo/sdks/core/sdk-metadata.json#L1-L20)
 - [repo/sdks/services/sdk-metadata.json:1-20](file://repo/sdks/services/sdk-metadata.json#L1-L20)
 
-章节来源
+**章节来源**
 - [repo/sdks/core/sdk-metadata.json:1-20](file://repo/sdks/core/sdk-metadata.json#L1-L20)
 - [repo/sdks/services/sdk-metadata.json:1-20](file://repo/sdks/services/sdk-metadata.json#L1-L20)
 
@@ -302,6 +340,11 @@ TS --> Fetch["fetch"]
 - 重试：SDK 未内置重试逻辑，建议在业务层根据错误码（如 RUNTIME_TIMEOUT、OPERATION_IN_PROGRESS）实施指数退避重试
 - 并发：建议复用 SDK 客户端实例以避免重复创建底层连接资源
 - 幂等：对写操作务必传入幂等键，避免网络抖动导致重复提交
+
+**新增 upsertTenantQuota 的优势**：
+- 原子性操作减少并发冲突
+- 幂等键确保操作的安全性
+- 统一的错误处理机制提高可靠性
 
 [本节为通用指导，不直接分析具体文件]
 
@@ -314,7 +357,12 @@ TS --> Fetch["fetch"]
 - 超时：RUNTIME_TIMEOUT 建议重试并适当延长超时
 - 调试信息：捕获错误对象的 request_id，便于服务端定位日志
 
-章节来源
+**upsertTenantQuota 相关故障排查**：
+- 配额不存在：首次调用会创建新配额
+- 配额冲突：使用不同的幂等键避免并发冲突
+- 权限不足：确保具有 scope:quota:write 权限
+
+**章节来源**
 - [repo/sdks/core/go/anisdk/client.go:374-389](file://repo/sdks/core/go/anisdk/client.go#L374-L389)
 - [repo/sdks/services/go/anisdk/client.go:374-389](file://repo/sdks/services/go/anisdk/client.go#L374-L389)
 - [repo/sdks/core/java/src/main/java/com/kubercloud/ani/core/ApiClient.java:384-425](file://repo/sdks/core/java/src/main/java/com/kubercloud/ani/core/ApiClient.java#L384-L425)
@@ -326,6 +374,8 @@ TS --> Fetch["fetch"]
 
 ## 结论
 本 SDK 以元数据驱动的方式，为四种语言提供了统一、简洁且可靠的 API 访问能力。通过统一的认证、错误处理、幂等性与分页工具，开发者可以快速集成 Core 与 Services 能力。对于生产环境，建议在上层补充连接池、超时与重试策略，并结合错误码进行精细化容错。
+
+**最新更新**：新增的 upsertTenantQuota 操作为租户配额管理提供了更强大和安全的原子性操作能力，有效避免了并发场景下的数据一致性问题。
 
 [本节为总结，不直接分析具体文件]
 
@@ -363,11 +413,59 @@ TS --> Fetch["fetch"]
   - Python: [repo/sdks/core/python/kubercloud_ani_core/client.py:456-462](file://repo/sdks/core/python/kubercloud_ani_core/client.py#L456-L462)
   - TypeScript: [repo/sdks/core/typescript/src/index.ts:463-472](file://repo/sdks/core/typescript/src/index.ts#L463-L472)
 
+### upsertTenantQuota 操作示例
+
+**新增功能**：upsertTenantQuota 操作支持租户配额的原子性创建或更新。
+
+#### 操作说明
+- **用途**：原子性地创建或更新租户配额
+- **优势**：避免并发冲突，确保数据一致性
+- **权限**：需要 `scope:quota:write` 权限
+
+#### 使用示例
+```go
+// Go 示例
+client := anisdk.NewClient("https://your-host/api/v1", token)
+result, err := client.Request("PUT", "/admin/tenants/{tenant_id}/quota/upsert", 
+    anisdk.RequestOptions{
+        Body: quotaData,
+        Params: map[string]string{"tenant_id": tenantId},
+    })
+```
+
+```python
+# Python 示例
+client = Client(base_url="https://your-host/api/v1", token=token)
+result = client.request("PUT", "/admin/tenants/{tenant_id}/quota/upsert", 
+    body=quota_data, 
+    params={"tenant_id": tenant_id})
+```
+
+```java
+// Java 示例
+ApiClient client = new ApiClient("https://your-host/api/v1", token);
+String result = client.request("PUT", "/admin/tenants/{tenant_id}/quota/upsert", 
+    new RequestOptions().body(quotaData).params(Map.of("tenant_id", tenantId)));
+```
+
+```typescript
+// TypeScript 示例
+const client = new Client({ baseUrl: "https://your-host/api/v1", token });
+const result = await client.request("PUT", "/admin/tenants/{tenant_id}/quota/upsert", {
+    body: quotaData,
+    params: { tenant_id: tenantId }
+});
+```
+
+**章节来源**
+- [repo/sdks/core/sdk-metadata.json:37-42](file://repo/sdks/core/sdk-metadata.json#L37-L42)
+
 ### 常见使用场景与最佳实践
 - 初始化客户端并设置 token
 - 调用列表接口时使用 cursorParams 分页
 - 对写操作使用 withIdempotencyKey 注入幂等键
 - 捕获并记录错误对象的 request_id 以便排查
 - 对超时与临时错误实施指数退避重试
+- **新增**：使用 upsertTenantQuota 进行租户配额的原子性操作，避免并发冲突
 
 [本节为实践指导，不直接分析具体文件]
