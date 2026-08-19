@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: console_frontend
+title: ANI Console 前端控制台
+scope:
+    - repo/frontends/console/
+source_files: []
+depends_on: []
+related_to:
+    - path: go_services/ani_gateway
+    - path: sdks

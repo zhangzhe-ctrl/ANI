@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: shared_pkg/adapters
+title: 运行时与基础设施适配器层
+scope:
+    - repo/pkg/adapters/
+source_files: []
+depends_on: []
+related_to: []

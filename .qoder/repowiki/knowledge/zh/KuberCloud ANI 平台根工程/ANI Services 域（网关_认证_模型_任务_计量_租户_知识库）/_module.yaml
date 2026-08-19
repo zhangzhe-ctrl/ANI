@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: go_services
+title: ANI Services 域（网关/认证/模型/任务/计量/租户/知识库）
+scope:
+    - repo/services/
+source_files: []
+depends_on: []
+related_to:
+    - path: architecture_docs

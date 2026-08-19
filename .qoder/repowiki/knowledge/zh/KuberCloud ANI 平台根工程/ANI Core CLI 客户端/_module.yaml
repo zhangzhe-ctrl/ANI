@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: cli_tool
+title: ANI Core CLI 客户端
+scope:
+    - repo/cli/ani/
+source_files: []
+depends_on: []
+related_to:
+    - path: api_contracts
+    - path: go_services/ani_gateway

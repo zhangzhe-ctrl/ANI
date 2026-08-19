@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: ai_rag_engine
+title: ANI RAG Engine 服务（文档解析与混合检索）
+scope:
+    - repo/ai/rag-engine/
+source_files: []
+depends_on: []
+related_to:
+    - path: deploy_infra
+    - path: go_services/model_service
+    - path: go_services/task_service

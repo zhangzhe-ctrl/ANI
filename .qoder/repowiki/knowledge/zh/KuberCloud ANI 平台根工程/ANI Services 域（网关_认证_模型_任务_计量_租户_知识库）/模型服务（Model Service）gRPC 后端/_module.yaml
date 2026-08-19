@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: go_services/model_service
+title: 模型服务（Model Service）gRPC 后端
+scope:
+    - repo/services/model-service/
+source_files: []
+depends_on: []
+related_to:
+    - path: ai_rag_engine
+    - path: deploy_infra
+    - path: shared_pkg/bootstrap

@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: sdks
+title: ANI SDK 多语言客户端代码生成产物
+scope:
+    - repo/sdks/
+source_files: []
+depends_on: []
+related_to:
+    - path: console_frontend

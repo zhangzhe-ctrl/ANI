@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: api_contracts
+title: ANI Core API 契约与 Protobuf 定义
+scope:
+    - repo/api/
+source_files: []
+depends_on: []
+related_to:
+    - path: architecture_docs
+    - path: cli_tool
+    - path: validation_scripts

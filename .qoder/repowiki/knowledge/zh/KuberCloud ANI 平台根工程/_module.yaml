@@ -1,0 +1,32 @@
+schema_version: 1
+module_path: ""
+title: KuberCloud ANI 平台根工程
+scope:
+    - CLAUDE.md
+    - AGENTS.md
+    - ANI-DOCS-INDEX.md
+    - .gitignore
+    - .gitattributes
+    - .claude/
+    - .github/
+    - ANI-00-产品战略与开发哲学.md
+    - ANI-01-客户画像与场景分析.md
+    - ANI-02-产品功能设计.md
+    - ANI-03-产品路线图.md
+    - ANI-04-技术栈设计.md
+    - ANI-05-系统架构设计.md
+    - ANI-06-开发计划.md
+    - ANI-07-部署工程设计.md
+    - ANI-08-安全架构设计.md
+    - ANI-09-数据模型设计.md
+    - ANI-10-GPT审查提示词集.md
+    - ANI-11-代码实现规范.md
+    - ANI-12-版本管理策略.md
+    - ANI-13-开源组件松耦合适配器架构.md
+    - ANI-14-API对齐与开发工作流.md
+    - ANI-15-GitHub-协作规范与提交纪律.md
+    - ANI-SERVICES-TEAM-GUIDE.md
+    - KuberCloud AI 专有云定义.md
+source_files: []
+depends_on: []
+related_to: []

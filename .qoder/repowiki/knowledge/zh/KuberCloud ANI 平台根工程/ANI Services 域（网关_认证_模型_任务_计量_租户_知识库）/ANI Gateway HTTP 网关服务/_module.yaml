@@ -1,0 +1,13 @@
+schema_version: 1
+module_path: go_services/ani_gateway
+title: ANI Gateway HTTP 网关服务
+scope:
+    - repo/services/ani-gateway/
+source_files: []
+depends_on: []
+related_to:
+    - path: cli_tool
+    - path: console_frontend
+    - path: deploy_infra
+    - path: go_services/auth_service
+    - path: validation_scripts

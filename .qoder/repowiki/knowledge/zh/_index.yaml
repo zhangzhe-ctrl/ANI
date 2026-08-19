@@ -1,0 +1,328 @@
+# 知识卡导出索引文件
+schema_version: 1
+locale: zh-CN
+branch: main
+nodes_managed: true
+exported_at: "2026-08-18T17:06:41Z"
+modules:
+    "":
+        dir_name: KuberCloud ANI 平台根工程
+        title: KuberCloud ANI 平台根工程
+        scope:
+            - CLAUDE.md
+            - AGENTS.md
+            - ANI-DOCS-INDEX.md
+            - .gitignore
+            - .gitattributes
+            - .claude/
+            - .github/
+            - ANI-00-产品战略与开发哲学.md
+            - ANI-01-客户画像与场景分析.md
+            - ANI-02-产品功能设计.md
+            - ANI-03-产品路线图.md
+            - ANI-04-技术栈设计.md
+            - ANI-05-系统架构设计.md
+            - ANI-06-开发计划.md
+            - ANI-07-部署工程设计.md
+            - ANI-08-安全架构设计.md
+            - ANI-09-数据模型设计.md
+            - ANI-10-GPT审查提示词集.md
+            - ANI-11-代码实现规范.md
+            - ANI-12-版本管理策略.md
+            - ANI-13-开源组件松耦合适配器架构.md
+            - ANI-14-API对齐与开发工作流.md
+            - ANI-15-GitHub-协作规范与提交纪律.md
+            - ANI-SERVICES-TEAM-GUIDE.md
+            - KuberCloud AI 专有云定义.md
+        source_files: []
+        children:
+            - ai_rag_engine
+            - api_contracts
+            - architecture_docs
+            - cli_tool
+            - console_frontend
+            - deploy_infra
+            - design_specs
+            - development_records
+            - go_services
+            - sdks
+            - shared_pkg
+            - validation_scripts
+        depends_on: []
+        related_to: []
+    ai_rag_engine:
+        dir_name: ANI RAG Engine 服务（文档解析与混合检索）
+        title: ANI RAG Engine 服务（文档解析与混合检索）
+        scope:
+            - repo/ai/rag-engine/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: deploy_infra
+            - path: go_services/model_service
+            - path: go_services/task_service
+    api_contracts:
+        dir_name: ANI Core API 契约与 Protobuf 定义
+        title: ANI Core API 契约与 Protobuf 定义
+        scope:
+            - repo/api/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: architecture_docs
+            - path: cli_tool
+            - path: validation_scripts
+    architecture_docs:
+        dir_name: 架构基线契约与依赖白名单
+        title: 架构基线契约与依赖白名单
+        scope:
+            - repo/architecture/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: api_contracts
+            - path: go_services
+            - path: validation_scripts
+    cli_tool:
+        dir_name: ANI Core CLI 客户端
+        title: ANI Core CLI 客户端
+        scope:
+            - repo/cli/ani/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: api_contracts
+            - path: go_services/ani_gateway
+    console_frontend:
+        dir_name: ANI Console 前端控制台
+        title: ANI Console 前端控制台
+        scope:
+            - repo/frontends/console/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: go_services/ani_gateway
+            - path: sdks
+    deploy_infra:
+        dir_name: ANI 平台部署与基础设施交付
+        title: ANI 平台部署与基础设施交付
+        scope:
+            - repo/deploy/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: ai_rag_engine
+            - path: go_services/ani_gateway
+            - path: go_services/auth_service
+            - path: go_services/model_service
+            - path: go_services/task_service
+    design_specs:
+        dir_name: 产品设计与超级智能执行文档集
+        title: 产品设计与超级智能执行文档集
+        scope:
+            - docs/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    development_records:
+        dir_name: ANI 开发记录与批次归档索引
+        title: ANI 开发记录与批次归档索引
+        scope:
+            - repo/development-records/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    go_services:
+        dir_name: ANI Services 域（网关_认证_模型_任务_计量_租户_知识库）
+        title: ANI Services 域（网关/认证/模型/任务/计量/租户/知识库）
+        scope:
+            - repo/services/
+        source_files: []
+        children:
+            - go_services/ani_gateway
+            - go_services/auth_service
+            - go_services/model_service
+            - go_services/reconcile_worker
+            - go_services/task_service
+            - go_services/tasks_docs
+        depends_on: []
+        related_to:
+            - path: architecture_docs
+    go_services/ani_gateway:
+        dir_name: ANI Gateway HTTP 网关服务
+        title: ANI Gateway HTTP 网关服务
+        scope:
+            - repo/services/ani-gateway/
+        source_files: []
+        children:
+            - go_services/ani_gateway/middleware
+            - go_services/ani_gateway/router
+            - go_services/ani_gateway/runtime_handlers
+        depends_on: []
+        related_to:
+            - path: cli_tool
+            - path: console_frontend
+            - path: deploy_infra
+            - path: go_services/auth_service
+            - path: validation_scripts
+    go_services/ani_gateway/middleware:
+        dir_name: ANI Gateway HTTP 中间件链
+        title: ANI Gateway HTTP 中间件链
+        scope:
+            - repo/services/ani-gateway/internal/middleware/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: go_services/ani_gateway/router
+    go_services/ani_gateway/router:
+        dir_name: ANI Gateway HTTP 路由注册中心
+        title: ANI Gateway HTTP 路由注册中心
+        scope:
+            - repo/services/ani-gateway/internal/router/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: go_services/ani_gateway/middleware
+            - path: go_services/ani_gateway/runtime_handlers
+    go_services/ani_gateway/runtime_handlers:
+        dir_name: ANI Gateway HTTP 服务与运行时装配
+        title: ANI Gateway HTTP 服务与运行时装配
+        scope:
+            - repo/services/ani-gateway/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: go_services/ani_gateway/router
+    go_services/auth_service:
+        dir_name: 认证服务（Auth Service）
+        title: 认证服务（Auth Service）
+        scope:
+            - repo/services/auth-service/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: deploy_infra
+            - path: go_services/ani_gateway
+            - path: shared_pkg/bootstrap
+    go_services/model_service:
+        dir_name: 模型服务（Model Service）gRPC 后端
+        title: 模型服务（Model Service）gRPC 后端
+        scope:
+            - repo/services/model-service/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: ai_rag_engine
+            - path: deploy_infra
+            - path: shared_pkg/bootstrap
+    go_services/reconcile_worker:
+        dir_name: 工作负载 Reconcile Worker 服务
+        title: 工作负载 Reconcile Worker 服务
+        scope:
+            - repo/services/reconcile-worker/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: shared_pkg/bootstrap
+    go_services/task_service:
+        dir_name: 任务调度与 Outbox 发布服务
+        title: 任务调度与 Outbox 发布服务
+        scope:
+            - repo/services/task-service/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: ai_rag_engine
+            - path: deploy_infra
+            - path: shared_pkg/bootstrap
+    go_services/tasks_docs:
+        dir_name: Services 域任务与文档（tasks & docs）
+        title: Services 域任务与文档（tasks & docs）
+        scope:
+            - repo/services/tasks/
+            - repo/services/docs/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    sdks:
+        dir_name: ANI SDK 多语言客户端代码生成产物
+        title: ANI SDK 多语言客户端代码生成产物
+        scope:
+            - repo/sdks/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: console_frontend
+    shared_pkg:
+        dir_name: ANI 共享能力包（Ports _ Adapters _ Bootstrap）
+        title: ANI 共享能力包（Ports / Adapters / Bootstrap）
+        scope:
+            - repo/pkg/
+        source_files: []
+        children:
+            - shared_pkg/adapters
+            - shared_pkg/bootstrap
+            - shared_pkg/ports_interfaces
+        depends_on: []
+        related_to: []
+    shared_pkg/adapters:
+        dir_name: 运行时与基础设施适配器层
+        title: 运行时与基础设施适配器层
+        scope:
+            - repo/pkg/adapters/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    shared_pkg/bootstrap:
+        dir_name: 服务启动与依赖装配（Bootstrap）
+        title: 服务启动与依赖装配（Bootstrap）
+        scope:
+            - repo/pkg/bootstrap/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: go_services/auth_service
+            - path: go_services/model_service
+            - path: go_services/reconcile_worker
+            - path: go_services/task_service
+    shared_pkg/ports_interfaces:
+        dir_name: 能力端口与共享领域类型（Ports & Types）
+        title: 能力端口与共享领域类型（Ports & Types）
+        scope:
+            - repo/pkg/ports/
+            - repo/pkg/types/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    validation_scripts:
+        dir_name: ANI 平台验证与测试脚本集
+        title: ANI 平台验证与测试脚本集
+        scope:
+            - repo/scripts/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: api_contracts
+            - path: architecture_docs
+            - path: go_services/ani_gateway

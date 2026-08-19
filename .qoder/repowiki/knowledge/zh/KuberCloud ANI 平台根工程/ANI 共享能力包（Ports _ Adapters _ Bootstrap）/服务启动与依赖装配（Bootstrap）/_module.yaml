@@ -1,0 +1,12 @@
+schema_version: 1
+module_path: shared_pkg/bootstrap
+title: 服务启动与依赖装配（Bootstrap）
+scope:
+    - repo/pkg/bootstrap/
+source_files: []
+depends_on: []
+related_to:
+    - path: go_services/auth_service
+    - path: go_services/model_service
+    - path: go_services/reconcile_worker
+    - path: go_services/task_service

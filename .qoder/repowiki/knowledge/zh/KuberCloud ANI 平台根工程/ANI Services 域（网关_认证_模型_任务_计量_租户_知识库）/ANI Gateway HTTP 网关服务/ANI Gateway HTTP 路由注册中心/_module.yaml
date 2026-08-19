@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: go_services/ani_gateway/router
+title: ANI Gateway HTTP 路由注册中心
+scope:
+    - repo/services/ani-gateway/internal/router/
+source_files: []
+depends_on: []
+related_to:
+    - path: go_services/ani_gateway/middleware
+    - path: go_services/ani_gateway/runtime_handlers

@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: go_services/tasks_docs
+title: Services 域任务与文档（tasks & docs）
+scope:
+    - repo/services/tasks/
+    - repo/services/docs/
+source_files: []
+depends_on: []
+related_to: []

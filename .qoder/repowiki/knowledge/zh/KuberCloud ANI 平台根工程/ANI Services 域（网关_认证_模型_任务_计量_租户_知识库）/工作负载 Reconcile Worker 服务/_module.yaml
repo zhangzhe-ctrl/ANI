@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: go_services/reconcile_worker
+title: 工作负载 Reconcile Worker 服务
+scope:
+    - repo/services/reconcile-worker/
+source_files: []
+depends_on: []
+related_to:
+    - path: shared_pkg/bootstrap

@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: development_records
+title: ANI 开发记录与批次归档索引
+scope:
+    - repo/development-records/
+source_files: []
+depends_on: []
+related_to: []

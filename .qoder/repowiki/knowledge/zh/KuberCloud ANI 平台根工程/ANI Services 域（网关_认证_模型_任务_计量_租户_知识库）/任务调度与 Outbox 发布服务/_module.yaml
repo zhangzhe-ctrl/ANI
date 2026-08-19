@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: go_services/task_service
+title: 任务调度与 Outbox 发布服务
+scope:
+    - repo/services/task-service/
+source_files: []
+depends_on: []
+related_to:
+    - path: ai_rag_engine
+    - path: deploy_infra
+    - path: shared_pkg/bootstrap

@@ -1,0 +1,13 @@
+schema_version: 1
+module_path: deploy_infra
+title: ANI 平台部署与基础设施交付
+scope:
+    - repo/deploy/
+source_files: []
+depends_on: []
+related_to:
+    - path: ai_rag_engine
+    - path: go_services/ani_gateway
+    - path: go_services/auth_service
+    - path: go_services/model_service
+    - path: go_services/task_service

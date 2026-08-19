@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: validation_scripts
+title: ANI 平台验证与测试脚本集
+scope:
+    - repo/scripts/
+source_files: []
+depends_on: []
+related_to:
+    - path: api_contracts
+    - path: architecture_docs
+    - path: go_services/ani_gateway

@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: go_services/auth_service
+title: 认证服务（Auth Service）
+scope:
+    - repo/services/auth-service/
+source_files: []
+depends_on: []
+related_to:
+    - path: deploy_infra
+    - path: go_services/ani_gateway
+    - path: shared_pkg/bootstrap

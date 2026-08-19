@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: design_specs
+title: 产品设计与超级智能执行文档集
+scope:
+    - docs/
+source_files: []
+depends_on: []
+related_to: []

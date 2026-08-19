@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: go_services/ani_gateway/runtime_handlers
+title: ANI Gateway HTTP 服务与运行时装配
+scope:
+    - repo/services/ani-gateway/
+source_files: []
+depends_on: []
+related_to:
+    - path: go_services/ani_gateway/router

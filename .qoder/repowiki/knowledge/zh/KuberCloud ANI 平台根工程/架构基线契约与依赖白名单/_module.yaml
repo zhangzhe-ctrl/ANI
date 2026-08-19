@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: architecture_docs
+title: 架构基线契约与依赖白名单
+scope:
+    - repo/architecture/
+source_files: []
+depends_on: []
+related_to:
+    - path: api_contracts
+    - path: go_services
+    - path: validation_scripts

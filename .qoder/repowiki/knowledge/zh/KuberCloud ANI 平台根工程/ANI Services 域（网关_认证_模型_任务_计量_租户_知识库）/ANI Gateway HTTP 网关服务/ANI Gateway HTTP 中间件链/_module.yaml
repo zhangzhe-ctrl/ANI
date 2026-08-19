@@ -1,0 +1,9 @@
+schema_version: 1
+module_path: go_services/ani_gateway/middleware
+title: ANI Gateway HTTP 中间件链
+scope:
+    - repo/services/ani-gateway/internal/middleware/
+source_files: []
+depends_on: []
+related_to:
+    - path: go_services/ani_gateway/router
